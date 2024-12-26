@@ -18,7 +18,6 @@ export default function Pagina6Screen() {
 
     return (
         <View>
-            <Text>Pagina6Screen</Text>
             <FlatList
                 data={datos}
                 renderItem={({ item }) => <Tarjeta3 datos={item} />}
