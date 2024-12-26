@@ -2,17 +2,17 @@ import { Alert, Button, StyleSheet, Text, TextInput, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 
 export default function Pagina5Screen() {
-    const [numero1, setnumero1] = useState(0)
-    const [numero2, setnumero2] = useState(0)
+    const [numero1, setnumero1] = useState(1)
+    const [numero2, setnumero2] = useState(1)
 
     useEffect(() => {
     if (numero1 <= 0) {
-        Alert.alert("ERROR")
-        setnumero1(0)
+        Alert.alert("ERROR, El numero debe ser mayor de 0")
+        setnumero1(1)
     }
     if (numero2 <= 0) {
-        Alert.alert("El número 2 es menor o igual a 0")
-        setnumero2(0)
+        Alert.alert("ERROR, El numero debe ser mayor de 0")
+        setnumero2(1)
     }
 
     }, [numero1, numero2])

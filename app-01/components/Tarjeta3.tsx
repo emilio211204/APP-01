@@ -1,10 +1,13 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, Alert } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Image, Modal } from 'react-native';
 
 export default function Tarjeta3({ datos }: any) {
+    const [modalVisible, setModalVisible] = useState(false);
+
     function detalles(name: string) {
-        Alert.alert('Detalles ', 'El personaje es: ' + name + ' y su ocupación es: ' + datos.occupation)
+        setModalVisible(true);
     }
+
     return (
         <View style={styles.tarjeta}>
             <TouchableOpacity onPress={() => detalles(datos.name.first)} style={styles.tarjetaTouchable}>
@@ -12,6 +15,23 @@ export default function Tarjeta3({ datos }: any) {
                 <Text style={styles.descripcion}>{datos.occupation}</Text>
                 <Image style={styles.img} source={{ uri: datos.images.main }} />
             </TouchableOpacity>
+            <Modal
+                visible={modalVisible}
+                transparent={true}
+                onRequestClose={() => setModalVisible(false)}
+            >
+                <View style={styles.modalContainer}>
+                    <View style={styles.modalContent}>
+                        <Text style={styles.modalTitle}>Detalles del personaje</Text>
+                        <Text style={styles.modalText}>Nombre: {datos.name.first}</Text>
+                        <Text style={styles.modalText}>Ocupación: {datos.occupation}</Text>
+                        <Image style={styles.modalImg} source={{ uri: datos.images.main }} />
+                        <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.modalButton}>
+                            <Text style={styles.modalButtonText}>Cerrar</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </Modal>
         </View>
     );
 }
@@ -48,9 +68,54 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     img: {
-        width: 100,
-        height: 100,
-        resizeMode: 'cover',
+        width: 180,
+        height: 180,
+        resizeMode: 'contain',
         borderRadius: 10,
+        alignSelf: 'center',
+    },
+    modalContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    },
+    modalContent: {
+        backgroundColor: '#fff',
+        padding: 20,
+        borderRadius: 10,
+        width: '80%',
+    },
+    modalTitle: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: '#333',
+        textAlign: 'center',
+        marginBottom: 10,
+    },
+    modalText: {
+        fontSize: 16,
+        color: '#666',
+        padding: 10,
+    },
+    modalImg: {
+        width: 150,
+        height: 150,
+        resizeMode: 'contain',
+        borderRadius: 10,
+        marginBottom: 20,
+        alignSelf: 'center',
+    },
+    modalButton: {
+        backgroundColor: '#7ff02d',
+        padding: 10,
+        borderRadius: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 20,
+    },
+    modalButtonText: {
+        fontSize: 16,
+        color: '#fff',
     },
 });
