@@ -35,7 +35,7 @@ function MyDrawer() {
             <Drawer.Screen name="Pagina3" component={Pagina3Screen} />
             <Drawer.Screen name="Pagina5" component={Pagina5Screen} />
             <Drawer.Screen name="Pagina6" component={Pagina6Screen} />
-            <Drawer.Screen name="PAgina7" component={Pagina7Screen} />
+            <Drawer.Screen name="Pagina7" component={Pagina7Screen} />
         </Drawer.Navigator>
     )
 }

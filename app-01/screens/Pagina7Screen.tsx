@@ -9,7 +9,7 @@ export default function Pagina7Screen() {
 
     const convertir = () => {
         const kelvinValue = parseFloat(kelvin);
-        if (isNaN(kelvinValue) || kelvinValue <= 0) {
+        if ( kelvinValue <= 0) {
             setMensaje('La temperatura en Kelvin no puede ser negativa');
             return;
         }
@@ -64,6 +64,8 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         padding: 10,
         marginBottom: 20,
+        textAlign: 'center',
+        borderRadius: 10,
     },
     resultado: {
         fontSize: 18,
