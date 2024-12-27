@@ -1,23 +1,23 @@
-import { Alert, Image, StyleSheet, Text, TouchableOpacity, View, Modal } from 'react-native'
+import { Image, Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 
-export default function Tarjeta2(props: any) {
+export default function Tarjeta4(props: any) {
 
     const [modalVisible, setModalVisible] = useState(false)
-
     function detalles(nombre: string) {
         setModalVisible(true)
     }
 
     return (
         <View>
-            <TouchableOpacity style={styles.container}
-                onPress={() => detalles(props.series.titulo)}>
-                <Text style={styles.titulo}>{props.series.titulo}</Text>
+            <TouchableOpacity  style={styles.container} onPress={() => detalles(props.results.name.first)}>
+                <Text style={styles.titulo}>{props.results.name.first}</Text>
+                <Text style={styles.descripcion}>{props.results.name.last}</Text>
                 <View style={styles.fila}>
-                    <Image source={{ uri: props.series.info.imagen }} style={styles.img} />
-                    <Text style={styles.descripcion}>{props.series.descripcion}</Text>
+                    <Image source={{ uri: props.results.picture.large }} style={styles.img} />
+                    <Text style={styles.descripcion}> Genero:{props.results.gender}</Text>
                 </View>
+
             </TouchableOpacity>
             <Modal
                 animationType="slide"
@@ -27,13 +27,16 @@ export default function Tarjeta2(props: any) {
             >
                 <View style={styles.modalContainer}>
                     <View style={styles.modalContent}>
-                        <Text style={styles.modalTitle}>Detalles de la serie</Text>
-                        <Image source={{ uri: props.series.info.imagen }} style={styles.modalImg} />
-                        <Text style={styles.modalText}>La serie es: {props.series.titulo}</Text>
-                        <Text style={styles.modalText}>Año: {props.series.anio}</Text>
-                        <Text style={styles.modalText}>Temporadas: {props.series.metadata.temporadas}</Text>
-                        <Text style={styles.modalText}>Creador: {props.series.metadata.creador}</Text>
-                        <TouchableOpacity style={styles.modalButton} onPress={() => setModalVisible(false)}>
+                        <Text style={styles.modalTitle}>Detalles del personaje</Text>
+                        <Text style={styles.modalText}>Nombre: {props.results.name.first}</Text>
+                        <Text style={styles.modalText}>Apellido: {props.results.name.last}</Text>
+                        <Text style={styles.modalText}>Correo: {props.results.email}</Text>
+                        <Text style={styles.modalText}>Telefono: {props.results.phone}</Text>
+                        <Text style={styles.modalText}>Genero: {props.results.gender}</Text>
+                        <Image style={styles.modalImg} source={{ uri:props.results.picture.large }} />
+
+
+                        <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.modalButton}>
                             <Text style={styles.modalButtonText}>Cerrar</Text>
                         </TouchableOpacity>
                     </View>
@@ -45,25 +48,21 @@ export default function Tarjeta2(props: any) {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#7ff02d',
+        backgroundColor: '#5cf5a1',
         margin: 10,
         borderRadius: 20
+
     },
     img: {
-        height: 120,
-        width: 120,
+        height: 100,
+        width: 100,
         resizeMode: "contain",
         borderRadius: 50,
         alignSelf: 'center'
-    },
-    fila: {
-        flexDirection: "row",
-        padding: 10
+
     },
     descripcion: {
-        flex: 1,
-        padding: 10,
-        fontSize: 15,
+        fontSize: 20,
     },
     titulo: {
         fontSize: 18,
@@ -114,4 +113,8 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         alignSelf: 'center'
     },
+    fila: {
+        flexDirection: "row",
+        padding: 10
+    }
 })
