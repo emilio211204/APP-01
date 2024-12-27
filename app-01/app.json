@@ -4,11 +4,11 @@
     "slug": "app-01",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/robotica.png",
+    "icon": "./assets/images/robot.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/images/robotica.png",
+      "image": "./assets/images/robot.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },

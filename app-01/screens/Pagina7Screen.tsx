@@ -19,11 +19,13 @@ export default function Pagina7Screen() {
 
         if (celsiusValue > 100) {
             setMensaje('Se ha superado la temperatura de ebullición del agua (100°C)');
+            setCelsius('100.00');
         } else {
             setMensaje('');
+            setCelsius(celsiusValue.toFixed(2));
         }
 
-        setCelsius(celsiusValue.toFixed(2));
+
         setFahrenheit(fahrenheitValue.toFixed(2));
     };
 
